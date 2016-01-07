@@ -1,3 +1,4 @@
+//Objects
 var name = "Joseph Wegmann";
 var bio = {
 	"name": name,
@@ -6,12 +7,12 @@ var bio = {
 	"contacts": {
 		"email": "josephwe27@gmail.com",
 		"mobile": "(516) 650-2778",
-		"github": "jwegmann27",
-		"Linkedin": "https://www.linkedin.com/in/joseph-wegmann-8001aab2"
+		"git": "jwegmann27",
+		"linked": "https://www.linkedin.com/in/joseph-wegmann-8001aab2"
 	},
 	"location": "Hicksville, NY",
 	"skills": ["cleaning dishes", "HTML", "CSS", "Being a baller"],
-	"image": "images/Fry.jpg"
+	"image": "images/jwclean.jpg"
 };
 
 var work = {
@@ -19,7 +20,7 @@ var work = {
 		{
 			"employer": "JEMCO Electrical Contractors",
 			"title": "Engineer",
-			"location": "Sunset Park, Brooklyn, NY",
+			"location": "Sunset Park, Brooklyn, New York",
 			"dates": "08/01/15 - 11/15/15",
 			"description": "Responsible for managing sub-contractors during for active projects. Estimated various large scale projects for public agencies in New York City. Worked in both office and field locations."
 		},
@@ -29,6 +30,13 @@ var work = {
 			"location": "Long Island City, New York",
 			"dates" : "05/30/13 - 08/15/13",
 			"description" : "Assessed construction needs of the Queens Midtown Tunnel, attended meetings to discuss upcoming renovations, and organized project files to optimize accessibility."
+		},
+		{
+			"employer" : "Old Westbury Golf and Country Club",
+			"title" : "Banquet Server",
+			"location" : "Old Westbury, New York",
+			"dates" : "Summer of 2011 and Summer of 2012",
+			"description" : "Setup and Served meals at formal and informal events. Functions varied in size from 20 - 400 guests. Lerned to multitask and work collaborativly in high pressure situations."
 		}
 	]
 };
@@ -50,7 +58,7 @@ var education = {
 	}],
 	"onlineCourse": [{
 		"title": "Front End Web Development",
-		"school": "Udacity",
+		"school": "Udacity.com",
 		"dates": "12/01/15",
 		"url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
 	}]
@@ -60,50 +68,40 @@ var projects = {
 	"projects" : [{
 		"title": "Project 1: Online Portfolio",
 		"dates": "11/15/15 - 12/15/15",
-		"description": "Created a responsive web page to act as a platform for future work to be displayed.",
+		"description": " Created a responsive web page to act as a platform for future work to be displayed.",
 		"url": "https://github.com/jwegmann27/P1_Potrfolio.git"
 	}]
-};// end of obj
-
-projects.display = function(){
-	for (project in projects.projects){
-		$("#projects").append(HTMLprojectStart);
-		
-		var formattedProjectTitle = HTMLprojectTitle.replace("%data%",projects.projects[project].title);
-		$(".project-entry:last").append(formattedProjectTitle);
-		var formattedProjectDates = HTMLprojectDates.replace("%data%",projects.projects[project].dates);
-		$(".project-entry:last").append(formattedProjectDates);
-		var formattedProjectDescription = HTMLprojectDates.replace("%data%",projects.projects[project].description);
-		$(".project-entry:last").append(formattedProjectDescription);
-	}//end of for
-}//end of func
-projects.display();
+};// end of obj 
 
 //Header
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-var formattedBioPic = HTMLbioPic.replace("%data%",bio.image);
-
-
-$("#header").prepend(formattedBioPic);
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-
-if (bio.skills.length > 0) {
+function headerbio(){
+	var formattedName = HTMLheaderName.replace("%data%", bio.name);
+	$("#header").append(formattedName);
+	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+	$("#header").append(formattedRole);
+	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+	$("#header").append(formattedMobile);
+	var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+	$("#header").append(formattedEmail);
+	var formattedGit = HTMLgithub.replace("%data%", bio.contacts.git);
+	$("#header").append(formattedGit);
+	var formattedLinked = HTMLtwitter.replace("%data%", bio.contacts.linked);
+	$("#header").append(formattedLinked);
+	var formattedBioPic = HTMLbioPic.replace("%data%",bio.image);
+	$("#header").append(formattedBioPic);
+	var formattedLocation = HTMLlocation.replace("%data%", bio.location);
+	$("#header").append(formattedLocation);
+	var formattedWelcomeMSG = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+	$("#header").append(formattedWelcomeMSG);
 	$("#header").append(HTMLskillsStart);
 
-	var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+	for(var i =0; i < bio.skills.length; i++){
+	var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
 	$("#skills").append(formattedSkill);
+	}
 
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-	$("#skills").append(formattedSkill);
-
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-	$("#skills").append(formattedSkill);
-
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-	$("#skills").append(formattedSkill);
-}
+} //end of bio function
+headerbio();
 
 function displaywork(){
 
@@ -126,6 +124,20 @@ for(job in work.jobs){ //cycles all jobs in the work object
 
 displaywork();
 
+projects.display = function(){
+	for (project in projects.projects){
+		$("#projects").append(HTMLprojectStart);
+		
+		var formattedProjectTitle = HTMLprojectTitle.replace("%data%",projects.projects[project].title);
+		$(".project-entry:last").append(formattedProjectTitle);
+		var formattedProjectDates = HTMLprojectDates.replace("%data%",projects.projects[project].dates);
+		$(".project-entry:last").append(formattedProjectDates);
+		var formattedProjectDescription = HTMLprojectDates.replace("%data%",projects.projects[project].description);
+		$(".project-entry:last").append(formattedProjectDescription);
+	}//end of for
+}//end of func
+
+projects.display();
 
 function inName(name) {
 
@@ -140,7 +152,6 @@ function inName(name) {
 $("#main").append(internationalizeButton);
 
 var x,y;
-
 $(document).click(function(loc) {
 	var x = loc.pageX;
 	var y = loc.pageY;
