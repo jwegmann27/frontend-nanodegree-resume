@@ -75,26 +75,26 @@ var projects = {
 
 //Header
 function headerbio(){
-	var formattedName = HTMLheaderName.replace("%data%", bio.name);
-	$("#header").append(formattedName);
 	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-	$("#header").append(formattedRole);
+	$("#header").prepend(formattedRole);
+	var formattedName = HTMLheaderName.replace("%data%", bio.name);
+	$("#header").prepend(formattedName);
 	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-	$("#header").append(formattedMobile);
+	$("#topContacts").append(formattedMobile);
 	var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-	$("#header").append(formattedEmail);
+	$("#topContacts").append(formattedEmail);
 	var formattedGit = HTMLgithub.replace("%data%", bio.contacts.git);
-	$("#header").append(formattedGit);
+	$("#topContacts").append(formattedGit);
 	var formattedLinked = HTMLtwitter.replace("%data%", bio.contacts.linked);
-	$("#header").append(formattedLinked);
+	$("#topContacts").append(formattedLinked);
+	var formattedLocation = HTMLlocation.replace("%data%", bio.location);
+	$("#topContacts").append(formattedLocation);
 	var formattedBioPic = HTMLbioPic.replace("%data%",bio.image);
 	$("#header").append(formattedBioPic);
-	var formattedLocation = HTMLlocation.replace("%data%", bio.location);
-	$("#header").append(formattedLocation);
 	var formattedWelcomeMSG = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 	$("#header").append(formattedWelcomeMSG);
-	$("#header").append(HTMLskillsStart);
 
+	$("#header").append(HTMLskillsStart);
 	for(var i =0; i < bio.skills.length; i++){
 	var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
 	$("#skills").append(formattedSkill);
