@@ -128,6 +128,7 @@ function initializeMap() {
     // adds the single location property from bio to the locations array
     locations.push(bio.contacts.location);
 
+
     // iterates through school locations and appends each location to
     // the locations array. Note that forEach is used for array iteration
     // as described in the Udacity FEND Style Guide: 
@@ -166,27 +167,24 @@ function initializeMap() {
       position: placeData.geometry.location,
       title: name
     });
-
     // infoWindows are the little helper windows that open when you click
     // or hover over a pin on a map. They usually contain more information
     // about a location.
+    var contentString = '<div id="marker-content"><h1>'+ name +'</h1><p> Learn more about this location by following the link </p><a href="https://www.google.com/search?q=' + name + ' target="_blank">'+name+'</a></p></div>';
+
     var infoWindow = new google.maps.InfoWindow({
-      content: name
+      content: contentString
     });
 
-    var iwString = "I had a job here at some point in time.";
-    var infowindow = new google.maps.Marker({
-        content: iwString //the display of the info window. 
-    });
-    
+    // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
-      infowindow.open(map, marker);
+      infoWindow.open(map, marker);
     });
 
     // this is where the pin actually gets added to the map.
     // bounds.extend() takes in a map location object
-    bounds.extend(new google.maps.LatLng(lat, lon));
-    // fit the map to the new marker
+    bounds.extend(new google.maps.LatLng(lat, lon))
+;    // fit the map to the new marker
     map.fitBounds(bounds);
     // center the map
     map.setCenter(bounds.getCenter());
@@ -244,9 +242,9 @@ Uncomment the code below when you're ready to implement a Google Map!
 // Calls the initializeMap() function when the page loads
 window.addEventListener('load', initializeMap);
 
-//Vanilla JS way to listen for resizing of the window
-//and adjust map bounds
+// Vanilla JS way to listen for resizing of the window
+// and adjust map bounds
 window.addEventListener('resize', function(e) {
-//Make sure the map bounds get updated on page resize
+  //Make sure the map bounds get updated on page resize
   map.fitBounds(mapBounds);
 });

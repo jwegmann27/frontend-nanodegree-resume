@@ -1,16 +1,16 @@
 //Objects
-var name = "Joseph Wegmann";
+//var name = "Joseph Wegmann";
 var bio = {
-	"name": name,
+	"name": "Joseph Wegmann",
 	"role": "Front End Web Developer",
 	"welcomeMessage": "Wubba Lubba Dub Dub!!!",
 	"contacts": {
 		"email": "josephwe27@gmail.com",
 		"mobile": "(516) 650-2778",
 		"git": "jwegmann27",
-		"linked": "https://www.linkedin.com/in/joseph-wegmann-8001aab2"
+		"linked": "https://www.linkedin.com/in/joseph-wegmann-8001aab2",
+		"location": "Hicksville, NY"
 	},
-	"location": "Hicksville, NY",
 	"skills": ["cleaning dishes", "HTML", "CSS", "Being a baller"],
 	"biopic": "images/jwclean.jpg"
 };
@@ -28,7 +28,7 @@ bio.display = function(){
 	$("#topContacts").append(formattedGit);
 	var formattedLinked = HTMLtwitter.replace("%data%", bio.contacts.linked);
 	$("#topContacts").append(formattedLinked);
-	var formattedLocation = HTMLlocation.replace("%data%", bio.location);
+	var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 	$("#topContacts").append(formattedLocation);
 	var formattedBioPic = HTMLbioPic.replace("%data%",bio.biopic);
 	$("#header").append(formattedBioPic);
