@@ -1,7 +1,6 @@
 //Objects
-var name = "Joseph Wegmann";
 var bio = {
-	"name": name,
+	"name": "Joseph Wegmann",
 	"role": "Front End Web Developer",
 	"welcomeMessage": "Wubba Lubba Dub Dub!!!",
 	"contacts": {
