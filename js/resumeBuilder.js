@@ -1,7 +1,7 @@
 //Objects
-//var name = "Joseph Wegmann";
+var name = "Joseph Wegmann";
 var bio = {
-	"name": "Joseph Wegmann",
+	"name": name,
 	"role": "Front End Web Developer",
 	"welcomeMessage": "Wubba Lubba Dub Dub!!!",
 	"contacts": {
@@ -11,7 +11,7 @@ var bio = {
 		"linked": "https://www.linkedin.com/in/joseph-wegmann-8001aab2",
 		"location": "Hicksville, NY"
 	},
-	"skills": ["cleaning dishes", "HTML", "CSS", "Being a baller"],
+	"skills": ["Deep Thinking", "HTML", "CSS", "Can make a 3 leaf clover with my tongue"],
 	"biopic": "images/jwclean.jpg"
 };
 
@@ -40,9 +40,12 @@ bio.display = function(){
 	var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
 	$("#skills").append(formattedSkill);
 	}//end of for loop
+	$("#footerContacts").append(formattedMobile);
+	$("#footerContacts").append(formattedEmail);
+	$("#footerContacts").append(formattedLinked);
+	$("#footerContacts").append(formattedGit);
 } //end of bio function
 bio.display();
-
 
 var work = {
 	"jobs": [
@@ -51,21 +54,24 @@ var work = {
 			"title": "Engineer",
 			"location": "Sunset Park, Brooklyn, New York",
 			"dates": "08/01/15 - 11/15/15",
-			"description": "Responsible for managing sub-contractors during for active projects. Estimated various large scale projects for public agencies in New York City. Worked in both office and field locations."
+			"description": "Responsible for managing sub-contractors during for active projects. Estimated various large scale projects for public agencies in New York City. Worked in both office and field locations.",
+			"url": "http://www.yellowpages.com/brooklyn-ny/mip/jemco-electrical-contracting-493806987?lid=493806987"
 		},
 		{
 			"employer" : "Queens Midtown Tunnel",
 			"title" : "Engineering Intern",
 			"location": "Long Island City, New York",
 			"dates" : "05/30/13 - 08/15/13",
-			"description" : "Assessed construction needs of the Queens Midtown Tunnel, attended meetings to discuss upcoming renovations, and organized project files to optimize accessibility."
+			"description" : "Assessed construction needs of the Queens Midtown Tunnel, attended meetings to discuss upcoming renovations, and organized project files to optimize accessibility.",
+			"url": "http://www.mta.info/bandt"
 		},
 		{
 			"employer" : "Old Westbury Golf and Country Club",
 			"title" : "Banquet Server",
 			"location" : "Old Westbury, New York",
 			"dates" : "Summer of 2011 and Summer of 2012",
-			"description" : "Setup and Served meals at formal and informal events. Functions varied in size from 20 - 400 guests. Lerned to multitask and work collaborativly in high pressure situations."
+			"description" : "Setup and Served meals at formal and informal events. Functions varied in size from 20 - 400 guests. Learned to multitask and work collaborativly in high pressure situations.",
+			"url": "http://www.owgolf.com/"
 		}
 	]
 };
@@ -80,11 +86,11 @@ for(job in work.jobs){ //cycles all jobs in the work object
 	var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
 	var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
 	var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
-
 	$(".work-entry:last").append(formattedEmployerTitle);
 	$(".work-entry:last").append(formattedWorkDates);
 	$(".work-entry:last").append(formattedWorkLocation);
 	$(".work-entry:last").append(formattedWorkDescription);
+	$(".work-entry:last a").attr("href",work.jobs[job].url);
 }//end of for/in
 }//end of displayWork
 work.display();
@@ -135,6 +141,7 @@ education.display = function(){
 		$(".education-entry:last").append(formattedOnlineTitle);
 		var formattedOnlineSchool = HTMLonlineSchool.replace("%data%",education.onlineCourse[onlinecourse].school);
 		$(".education-entry:last").append(formattedOnlineSchool);
+		$("h3").next().attr("href",education.onlineCourse[onlinecourse].url);
 		var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourse[onlinecourse].dates);
 		$(".education-entry:last").append(formattedOnlineDates);
 		var formattedOnlineURL = HTMLonlineURL.replace("%data%",education.onlineCourse[onlinecourse].url);
@@ -166,6 +173,7 @@ projects.display = function(){
 		for (var i=0;i < projects.projects[project].images.length;i++){
 			var formattedProjectImages = HTMLprojectImage.replace("%data%",projects.projects[project].images[i]);
 			$(".project-entry:last").append(formattedProjectImages);
+			$(".project-entry:last img").attr("align","left");
 		}
 	}//end of for
 }//end of func
